@@ -264,39 +264,480 @@ Por lo que la representación en punto flotante de 175.8376 es 0 10000110 101011
 
 ### Tipos de datos
 
+Cada lenguaje de programación tiene un conjunto de tipos de datos que se pueden utilizar para representar la información. Cada tipo de dato permite determinar los siguientes aspectos:
+* El rango de valores que se pueden representar con el tipo de dato.
+* El tamaño en memoria que ocupa el tipo de dato.
+* Las operaciones que se pueden realizar con el tipo de dato.
+* La forma en la que se almacenan en memoria los diferentes valores.
+
+Los tipos de datos se dividen en dos categorías: tipos de datos primitivos y tipos de datos compuestos.
+
+Los tipos de datos primitivos son aquellos que representan un único valor y se utilizan para representar los datos más básicos. Los tipos de datos primitivos se dividen en varios tipos:  
+* Tipos de datos enteros: son aquellos que representan números enteros. Los tipos de datos enteros se dividen en varios tipos: *char*, *int*, *short*, *long*.  
+* Tipos de datos reales: son aquellos que representan números reales. Los tipos de datos reales se dividen en varios tipos: *float*, *double*.  
+* Tipos de datos lógicos: son aquellos que representan valores lógicos. Los tipos de datos lógicos se dividen verdaderos o falsos: *bool*. 
+* Tipos de datos carácter: son aquellos que representan caracteres. El tipo de dato carácter es: *char*.  
+
+La diferencia entre los diferentes tipos radica, como en el caso de los enteros sin signo, en la cantidad de memoria que ocupan y en el rango de valores que pueden representar. Su tamaño no está definido en el estándar y puede variar de una máquina a otra. Lo que sí se garantiza es que el tamaño de un tipo de dato no será menor que el de otro tipo de dato de menor tamaño.
+
+```
+Tipo de dato | Tamaño en bytes | Rango de valores
+char         | 1               | -128 a 127
+int          | 2               | -32768 a 32767
+short        | 2               | -32768 a 32767
+long         | 4               | -2147483648 a 2147483647
+float        | 4               | 3.4E-38 a 3.4E+38
+double       | 8               | 1.7E-308 a 1.7E+308
+bool         | 1               | true o false
+```
+
+Los tipos de datos compuestos son aquellos que representan un conjunto de valores y se utilizan para representar los datos más complejos. Los tipos de datos compuestos se dividen en varios tipos:  
+* Tipos de datos estructurados: son aquellos que representan un conjunto de valores de diferentes tipos. Los tipos de datos estructurados se dividen en varios tipos: *struct*, *union*.  
+* Tipos de datos enumerados: son aquellos que representan un conjunto de valores que se pueden enumerar. El tipo de dato enumerado es el *enum*.  
+* Tipos de datos puntero: son aquellos que representan la dirección de memoria de un valor. El tipo de dato puntero es el *pointer*.
+
 ### Constantes
 
+Decimos que son constantes auqellos datos que no son susceptibles de ser modificados durante la ejecución de un programa. Las constantes se utilizan para representar valores que no cambian, como el valor de *pi* o el número de días de la semana. 
+
+Estas constantes se pueden encajar en varias categorías:
+* Constantes enteras: son aquellas que representan números enteros. Las constantes enteras se definen con la palabra clave *const* y se pueden inicializar con un valor entero.
+* Constantes reales: son aquellas que representan números reales. Las constantes reales se definen con la palabra clave *const* y se pueden inicializar con un valor real.
+* Constantes lógicas: son aquellas que representan valores lógicos. Las constantes lógicas se definen con la palabra clave *const* y se pueden inicializar con un valor lógico.
+* Constantes carácter: son aquellas que representan caracteres. Las constantes carácter se definen con la palabra clave *const* y se pueden inicializar con un valor carácter.
+
+```java
+const int DIAS_SEMANA = 7;
+const float PI = 3.14159;
+const bool VERDADERO = true;
+const char INICIAL = 'J';
+```
+Algunos caracteres especiales se representan con secuencias de escape, que son secuencias de caracteres que se utilizan para representar caracteres especiales. Las secuencias de escape se representan con una barra invertida seguida de un carácter. Algunas secuencias de escape comunes son:
+* \n: salto de línea
+* \t: tabulación
+* \b: retroceso
+* \r: retorno de carro
+* \': comilla simple
+* \": comilla doble
+* \\: barra invertida
+
 ### Variables
+
+Las variables se utilizan para almacenar valores que pueden cambiar durante la ejecución de un programa. Las variables se utilizan para representar datos que pueden variar, como el número de intentos de un usuario o el saldo de una cuenta bancaria.
+
+Se designan mediante un nombre al que se llama identificador. Este identificador puede ser cualquier secuencia de letras, dígitos y guiones bajos, pero debe empezar por una letra. Además, no se pueden utilizar palabras reservadas del lenguaje de programación.
+
+Es conveniente que el identificador de una variable sea descriptivo, para que se pueda entender fácilmente qué representa la variable. Además, es importante que el identificador de una variable sea único, para evitar confusiones.
+
+```java
+int edad = 25;
+float altura = 1.75;
+bool casado = false;
+char inicial = 'J';
+```
+
+Las operaciones básicas que pueden realizarse con una variable son declararla, utilizar el valor almacenado, o asignarle un nuevo valor.
+
+Hay lenguajes en los que es necesario declarar una variable antes de poder utilizarla. La declaración de una variable consiste en indicar el tipo de dato que va a almacenar la variable y el nombre de la variable. 
+
+```java
+int edad;
+float altura;
+bool casado;
+char inicial;
+```
+
+En otros lenguajes, como Python, no es necesario declarar una variable antes de poder utilizarla. En estos lenguajes, la variable se declara automáticamente cuando se le asigna un valor.
+
+```python
+edad = 25
+altura = 1.75
+casado = False
+inicial = 'J'
+```
+
+Hay que tener en cuenta que si una varibale se declara pero no se le asigna un valor, la variable contendrá un valor basura, es decir, un valor que no tiene sentido. Por ello, es importante inicializar las variables antes de utilizarlas.
+
+Para realizar la asignación de un valor a una variable se utiliza el operador de asignación, que es un signo igual (=). El operador de asignación se utiliza para asignar un valor a una variable. El valor que se asigna a una variable puede ser una constante, una expresión o el valor de otra variable.
+
+El tiempo de vida de una varibale determina cuándo se crea y cuándo se destruye. Las variables se crean cuando se declara y se destruyen cuando se sale del ámbito en el que se declararon. El ámbito de una variable es la parte del programa en la que se puede utilizar la variable. Esto trae consigo una serie de consecuencias:
+* La primera, y más importante, es que el valor de una variable en sucesivas ejecuciones del programa puede ser diferente.
+* La segunda es que el valor de inicialización especificado en la declaración de la variable se aplica en casa una de las ejecuciones del bloque de código en el que se declara la variable.
+* La tercer es que las modificaciones que hagamos sobre la variable dentro de un bloque de código no afectarán a la variable fuera de ese bloque.
+
+A estas variables se les conoce como variables automáticas o locales y son las que habitualmente se utilizarán en los programas.
+
+Existe un procedimiento para evitar que las variables locales se destruyan al salir del ámbito en el que se declararon, y es declararlas como variables globales. Las variables globales son aquellas que se declaran fuera de cualquier función y se pueden utilizar en cualquier parte del programa. Esta especificación tiene un triple efecto sobre la variable:  
+* Hace que las variables se creen al inicio de la ejecución del programam, y no al declararla dentro de un bloque como las variables locales.
+* Hace que las variables se destruyan al final de la ejecución del programa, y no al salir del bloque en el que se declararon.
+* Hace que se inicialicen al comienzo de la ejecución del programa: al valor indicado en la declaración de la variable, o a cero si no se indica nada. Sólo pueden utilizarse expresiones constantes para la inicialización de las variables globales.
+
+```java
+static int contador = 0;
+```
+
+Desde el punto de vista de la detección y corrección de errores, es muy conveniente que la visibilidad de las variables sea lo más reducida posible: podemos controlar el valor de dicha variable centrándonos en el contexto en el que es visible. Por esta razón es muy desaconsejable la utilización de variables globales en cualquier programa.
 
 ## Expresiones y operadores
 
 ### Introducción
 
+En cualquier programa es necesario procesaro las datos de entrada para generar datos de salida. El elemento básico que tenemos para procesar los datos son las expresiones. Una expresión es una combinación de valores, variables y operadores que se evalúa para obtener un resultado. Las expresiones se utilizan para realizar cálculos, comparaciones y asignaciones.
+
+Los paréntesis se utilizan para agrupar los elementos de una expresión y determinar el orden de evaluación de los operadores. 
+
+```
+Para evaluar la expresión 2 + 3 * 4, primero se evalúa la multiplicación y luego la suma:
+2 + 3 * 4 = 2 + 12 = 14
+
+Para evaluar la expresión (2 + 3) * 4, primero se evalúa la suma y luego la multiplicación:
+(2 + 3) * 4 = 5 * 4 = 20
+```
+
 ### Operadores aritméticos
+
+Toman como valores operandos numéricos y producen como resultado un valor numérico. Los operadores aritméticos en general son:
+* Operadores unarios: son aquellos que toman un único operando. Los operadores unarios son el operador de incremento y el operador de decremento.
+  - \+ no tiene efecto aparente
+  - \- cambia el signo del operando
+* Operadores binarios: son aquellos que toman dos operandos. Los operadores binarios son el operador de suma, el operador de resta, el operador de multiplicación, el operador de división y el operador de módulo.
+  - \+ suma dos operandos
+  - \- resta dos operandos
+  - \* multiplica dos operandos
+  - \/ divide dos operandos. Devuelve el cociente de la división. Si los operandos son enteros, el resultado es un entero. Si los operandos son reales, el resultado es un real.
+  - \% calcula el resto de la división entera de dos operandos. Devuelve el resto de la división. Ambos operandos deben ser enteros.
+
+Estos operadores aritméticos siguen las reglas de prioridad de las operaciones aritméticas. Si dos operadores tienen la misma prioridad, se evalúan de izquierda a derecha.
+
+No hay que olvidar que los valores de tipo *char* se pueden tratar como enteros, por lo que se pueden utilizar en operaciones aritméticas. Sin embargo, hay dos oepraciones que resultan de especial interés:  
+* La suma de un valor de tipo *char* con un valor numérico, que produce un valor de tipo *char* y representa el carácter cuyo código se diferencia del primero tantas unidades como hayamos sumado o restado.  
+
+```java
+char c = 'A';
+c = c + 1; // c = 'B'
+```
+
+* La resta de dos valores de tipo *char*, que produce un valor numérico y representa la diferencia entre los códigos de los dos caracteres. Esto es bastante útil para convertir un carácter en su posición en la tabla ASCII.  
+
+```java	
+char c = 'A';
+int n = c - 'A'; // n = 0
+```
 
 ### Operadores relacionales
 
+Toman como operando valores numéricos y producen como resultado un valor entero. Los operadores relacionales son todos binarios:
+* *==*  Devuelve verdadero si los dos operandos son iguales.
+* *!=*  Devuelve verdadero si los dos operandos son diferentes.
+* *<* Devuelve verdadero si el primer operando es menor que el segundo.
+* *<=*  Devuelve verdadero si el primer operando es menor o igual que el segundo.
+* *\>*  Devuelve verdadero si el primer operando es mayor que el segundo.
+* *\>=* Devuelve verdadero si el primer operando es mayor o igual que el segundo.
+
+```
+Si i,j,k son variables enteras, con valores 3, 4 y 5 respectivamente, entonces:
+i == j es falso
+i != j es verdadero
+i < j es verdadero
+i <= j es verdadero
+i > j es falso
+i >= j es falso
+```
+
+Conviene recordar que las variables de tipo *char* también son tipos numéricos, por lo que se pueden utilizar en operaciones relacionales. En este caso, se comparan los códigos ASCII de los caracteres. Para el código ASCII, y en general para cualquier sistema de codificación de caracteres, se pueden establecer las siguientes relaciones:
+* '0' < '1' < ... < '9'
+* 'A' < 'B' < ... < 'Z'
+* 'a' < 'b' < ... < 'z'
+
+Cuando se utilizan los operadores de relación de igualdad o desigualdad con operandos con decimales, hay que tener cuidado con la precisión de estos, puesto que puede ser que el resultado esperado no sea exactamente el obtenido.
+
+```
+Por ejemplo, si se compara 0.1 + 0.2 == 0.3, el resultado será falso, ya que el resultado de la suma no es exactamente 0.3, sino un valor muy próximo.
+```
+
 ### Operadores lógicos
+
+Tomando operandos numéricos, producen como resultado un valor lógico. Los operadores lógicos son todos binarios:
+* *&&* Representa el Y de la lógica proposicional; es decir, devuelve verdadero si ambos operandos son verdaderos.
+* *||* Representa el O de la lógica proposicional; es decir, devuelve verdadero si al menos uno de los operandos es verdadero.
+* *!* Representa el NO de la lógica proposional; es decir, si el operando es verdadero, devuelve falso, y si el operando es falso, devuelve verdadero.
+
+```
+Si i,j,k son variables enteras, con valores 3, 4 y 5 respectivamente, entonces:
+i < j && j < k es verdadero
+i < j || j > k es verdadero
+!(i < j) es falso
+```
 
 ### Operadores de manejo de bits
 
+Sólo admiten operandos de tipo entero, y se aplican bit a bit. Los operadores de manejo de bits son:
+* *~* Operador de negación bit a bit. Invierte los bits de un operando.
+* *&* Operador de conjunción bit a bit. Realiza la operación lógica AND bit a bit.
+* *|* Operador de disyunción bit a bit. Realiza la operación lógica OR bit a bit.
+* *^* Operador de disyunción exclusiva bit a bit. Realiza la operación lógica XOR bit a bit.
+* *<<* Operador de desplazamiento a la izquierda. Desplaza los bits de un operando a la izquierda un número de posiciones determinado.
+* *>>* Operador de desplazamiento a la derecha. Desplaza los bits de un operando a la derecha un número de posiciones determinado.
+
+Lo mejor para utilizar correctamente estos operadores es obtener la representación binaria de los operandos y aplicar la operación bit a bit, y luego volver a convertir el resultado a decimal.
+
+```
+~126 = ~0111 1110 = 100 0001 = -127
+126 & 3 = 0111 1110 & 0000 0011 = 0000 0010 = 2
+126 | 3 = 0111 1110 | 0000 0011 = 0111 1111 = 127
+126 ^ 3 = 0111 1110 ^ 0000 0011 = 0111 1101 = 125
+126 << 2 = 0111 1110 << 2 = 1111 1000 = 504
+126 >> 2 = 0111 1110 >> 2 = 0001 1111 = 31
+```
+
 ### Operadores de asignación
 
-### Operadores de autoincremento y autodecremento
+El operador de asignación admite dos operandos, el de la izquierda debe ser un identificador de variable, mientras que el de la derecha puede ser una constante, una variable o una expresión. El operador de asignación se representa con el símobolo *=*.
+
+Una particularidad de este operador es que se evalúa de derecha a izquierda, por lo que las asignaciones de más a la derecha se realizan antes que las de más a la izquierda.
+
+Cuando se realiza la asignación, el resultado de la expresión se convierte al tipo del operando de la izquierda. Si el tipo del operando de la izquierda es de mayor rango que el de la derecha, no hay ningún problema. Sin embargo, si es al revés sí pueden producirse alteraciones en los valores de los datos:
+
+* Si un tipo entero se asigna a otro tipo entreo de menor rango, se produce un desbordamiento debido a que se copian los bits menos significativos del operando de la derecha en el operando de la izquierda.
+* Si un valor flotante se asigna a una variable de tipo entero, se trunca el valor flotante, es decir, se pierde la parte decimal del valor flotante.
+* Si un valor flotante se asigna a una variable flotante, se produce un redondeo que será tanto mayor cuanto menor sea la precisión del tipo de la variable.
+
+```
+int i = 3;
+float f = 3.14;
+i = f; // i = 3
+f = i; // f = 3.0
+```
+
+Es importante destacar que las asignaciones que puedad dar lugar a pérdida de información (por redondeo o truncado) no son ilegales, y por lo tanto el compilador nos va a dejar realizarlas; pero deben realizarse con muchísimo cuidado.
+
+Existen operadores que permiten simultáneamente realizar una operación con una variable, y asignar el resultado a la misma variable. Estos operadores son los operadores de asignación compacta. Los operadores de asignación compacta son:
+* *+=* Operador de asignación de suma. Suma el operando de la derecha al operando de la izquierda y asigna el resultado al operando de la izquierda.
+* *-=* Operador de asignación de resta. Resta el operando de la derecha al operando de la izquierda y asigna el resultado al operando de la izquierda.
+* **=* Operador de asignación de multiplicación. Multiplica el operando de la derecha por el operando de la izquierda y asigna el resultado al operando de la izquierda.
+* */* Operador de asignación de división. Divide el operando de la izquierda por el operando de la derecha y asigna el resultado al operando de la izquierda.
+* *%=* Operador de asignación de módulo. Calcula el resto de la división entera del operando de la izquierda por el operando de la derecha y asigna el resultado al operando de la izquierda.
+
+```
+int i = 3;
+i += 2; // i = 5
+i -= 1; // i = 4
+i *= 3; // i = 12
+i /= 4; // i = 3
+i %= 2; // i = 1
+```
+
+Es importante no perder la vista que en la asignación compacta, primero se evalúa la operación y luego se asigna el resultado a la variable. Por lo tanto, si se realiza una operación con una variable y se asigna el resultado a la misma variable, el resultado puede ser diferente al esperado.
+
+```	
+La expresión x = x * y / z; es diferente de x *= y / z;
+Ya que si desglosamos la primera expresión, primero se evalúa x * y, y luego se divide el resultado por z. En cambio, en la segunda expresión, primero se evalúa x * y / z, y luego se asigna el resultado a x.
+```
+
+Ya hemos visto que cuando se trata de una asignación, se realiza una conversión de tipos, de forma que el resultado de evaluar la expresión se convierte al tipo de la variable antes de realizar la asignación. Hay situaciones en las que es necesario realizar un cambio de tipo sin necesidad de realizar una asignación. Para ello, se utilizan los operadores de conversión de tipo. Suele aparecer en la literatura como *casting*.
+
+```java
+int i = 3;
+float f = 3.14;
+i = (int)f; // i = 3
+f = (float)i; // f = 3.0
+```
 
 ### Operadores de condición
 
+Los operadores de condición son operadores ternarios, es decir, que toman tres operandos. Los operadores de condición son:
+* *?* Operador de condición. Evalúa el operando de la izquierda y, si es verdadero, devuelve el operando de la derecha; si es falso, devuelve el operando de la derecha.
+* *:* Operador de condición. Se utiliza para separar los operandos del operador de condición.
+
+```java
+int i = 3;
+int j = 4;
+int k = i < j ? i : j; // k = 3
+```
+
 ### Reglas de prioridad
+
+Los operadores tienen reglas de precedencia (o prioridad) y asociatividad que determinan exactamente la forma de evaluar las expresiones.
+
+La precedencia de los operadores determina el orden en el que se evalúan los operadores en una expresión. Los operadores con mayor precedencia se evalúan antes que los operadores con menor precedencia. Si dos operadores tienen la misma precedencia, se evalúan de izquierda a derecha.
+
+La asociatividad de los operadores determina el orden en el que se evalúan los operadores con la misma precedencia. Los operadores con asociatividad izquierda se evalúan de izquierda a derecha, mientras que los operadores con asociatividad derecha se evalúan de derecha a izquierda.
+
+```
+La precedencia de los operadores aritméticos es la siguiente:
+1. Paréntesis
+2. Operadores unarios postfijos: ++, --
+3. Operadores de llamadas a funciones: ()
+4. Operadores de tablas y estructuras: [], ., ->
+5. Operadores unarios prefijos: +, -, !, ~, ++, --
+6. Operadores de multiplicación y división: *, /, %
+7. Operadores de suma y resta: +, -
+8. Operadores de desplazamiento: <<, >>
+9. Operadores de relación: <, <=, >, >=
+10. Operadores de igualdad: ==, !=
+11. Operadores de conjunción: &
+12. Operadores de disyunción: |
+13. Operadores de disyunción exclusiva: ^
+14. Operadores de conjunción lógica: &&
+15. Operadores de disyunción lógica: ||
+16. Operadores de condición: ?:
+17. Operadores de asignación: =, +=, -=, *=, /=, %=
+```
 
 ## Estructuras de control
 
 ### Introducción
 
+Hasta ahora las instrucciones seguían una estructura secuencial: se ejecutaba una sentencia, tras la finalización se ejecutaba la siguiente, y así sucesivamente hasta alcanzar el final del programa. Sin embargo, en la mayoría de los programas es necesario tomar decisiones o repetir un conjunto de instrucciones. Para ello, se utilizan las estructuras de control.
+
+Las estructuras de control se dividen en tres categorías: estructuras secuenciales, estructuras condicionales y estructuras repetitivas. Se debe evitar el uso de cualquier otra estructura ya que conduce a un código no estructurado. Esto no supone ninguna limitación a la hora de escribir un programa, ya que cualquier algoritmo se puede expresar utilizando únicamente estas tres estructuras.
+
+En concreto se deben evitar las instrucciones de salto incondicional, como *goto*, ya que dificultan la comprensión del código y la detección de errores. Además, las instrucciones de salto incondicional pueden provocar la ejecución de instrucciones fuera de su contexto, lo que puede llevar a resultados inesperados. También se deben evitar las sentencias de salto condicional, como *break* o *continue*, ya que dificultan la comprensión del código y la detección de errores.
+
 ### Estructuras secuenciales
+
+Las sentencias se ejecutan en el orden en el que aparecen en el programa. La ejecución de una sentencia no depende de la ejecución de otra sentencia. Las estructuras secuenciales se utilizan para ejecutar un conjunto de instrucciones en un orden determinado.
+
+```java
+int i = 3;
+int j = 4;
+int k = i + j;
+```
 
 ### Estructuras condicionales
 
+También conocidas como estructuras de selección, se utilizan para tomar decisiones en un programa. Las estructuras condicionales se dividen en dos tipos: estructuras condicionales simples y estructuras condicionales compuestas.
+
+Las estructuras condicionales simples se utilizan para ejecutar un conjunto de instrucciones si se cumple una condición. Las estructuras condicionales simples se dividen en dos tipos: estructuras condicionales simples con una sola alternativa y estructuras condicionales simples con dos alternativas.
+
+![if-else](imgs/if-else.png)
+
+```java
+int i = 3;
+int j = 4;
+if (i < j) {
+    System.out.println("i es menor que j");
+}
+```
+
+Estas sentencias se pueden anidar para realizar una selección múltiple. En este caso, se evalúan las condiciones en orden y se ejecuta el bloque de instrucciones correspondiente a la primera condición que se cumpla.
+
+```java
+// Ejemplo de cálculo de año bisiesto
+int año = 2020;
+if (año % 4 == 0) {
+    if (año % 100 != 0 || año % 400 == 0) {
+        System.out.println("El año es bisiesto");
+    } else {
+        System.out.println("El año no es bisiesto");
+    }
+} else {
+    System.out.println("El año no es bisiesto");
+}
+```
+
+Las estructuras condicionales compuestas se utilizan para ejecutar un conjunto de instrucciones si se cumple una condición y otro conjunto de instrucciones si no se cumple la condición. Las estructuras condicionales compuestas se dividen en dos tipos: estructuras condicionales compuestas con una sola alternativa y estructuras condicionales compuestas con dos alternativas.
+
+![switch-case](imgs/switch-case.png)
+
+El funcionamiento de esta estructura es el siguiente:
+1. Se evalúa la expresión que acompaña a la sentencia *switch*. Esta expresión debe ser de tipo entero, carácter o enumerado.
+2. Se compara el valor de la expresión con el valor de cada una de las etiquetas *case*. Si se encuentra una coincidencia, se ejecutan las instrucciones asociadas a esa etiqueta. Estos valores deberán ser siempre expresiones constantes enteras.
+
+Existe una etiqueta especial, *default*, que se ejecuta si no se encuentra ninguna coincidencia. La etiqueta *default* es opcional y se puede colocar en cualquier posición dentro de la sentencia *switch*.
+
+```java
+// Programa que lea un número de mes e indique cuántos días tiene
+int mes = 2;
+switch (mes) {
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12:
+        System.out.println("El mes tiene 31 días");
+        break;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+        System.out.println("El mes tiene 30 días");
+        break;
+    case 2:
+        System.out.println("El mes tiene 28 o 29 días");
+        break;
+    default:
+        System.out.println("Mes incorrecto");
+}
+```
+
 ### Estructuras repetitivas
+
+En este tipo de estructuras, se repite un conjunto de instrucciones en función de una condición. La principal diferencia entre las diferentes estructuras repetitivas consiste en qué punto se realiza la comprobación de la condición.
+
+La sentencia *while* se utiliza para repetir un conjunto de instrucciones mientras se cumpla una condición. La condición se evalúa antes de ejecutar el bloque de instrucciones.
+
+![while](imgs/while.png)
+
+El funcionamiento es el siguiente:
+1. Se evalúa la expresión que acompaña a la sentencia *while*. Si la expresión es verdadera, se ejecutan las instrucciones del bloque.
+2. Se vuelve a evaluar la expresión. Si la expresión es verdadera, se ejecutan las instrucciones del bloque. Este proceso se repite hasta que la expresión sea falsa.
+
+Es importante destacar que puede que el bloque que acompaña a la sentencia *while* no se ejecute nunca si la condición es falsa desde el principio. Además alguno de los valores que determinan la condición de salida del bucle deben cambiar en algún momento para que el bucle no sea infinito.
+
+En la condición, es conveniente utilizar los operadores de rango (>, <, >=, <=) en lugar de los operadores de igualdad (==, !=) para evitar problemas de precisión.
+
+```java
+// Programa que copia la entrada estándar en la salida estándar
+char c;
+while ((c = System.in.read()) != -1) {
+    System.out.write(c);
+}
+```
+
+En las estructuras repetitivas en general, y como caso en particular en la sentencia *while*, es de especial importancia comprobar que los valores extermos de la condición de salida del bucle son correctos. Para ello es de gran utilizad repasar mentalmente el bucle con los valores extremos y comprobar que el bucle se comporta como se espera.
+
+```
+Veamos un ejemplo en el que se pretende imprimir los números del 1 al 10. Si la condición de salida del bucle es i < 10, el bucle se ejecutará 9 veces, ya que el valor 10 no se imprimirá. Por el contrario, si la condición de salida del bucle es i <= 10, el bucle se ejecutará 10 veces, y se imprimirán los números del 1 al 10.
+```
+
+La sentencia *do-while* se utiliza para repetir un conjunto de instrucciones mientras se cumpla una condición. La condición se evalúa después de ejecutar el bloque de instrucciones.
+
+![do-while](imgs/do-while.png)
+
+A diferencia de la sentencia *while*, la sentencia *do-while* garantiza que el bloque de instrucciones se ejecuta al menos una vez. Esto es útil cuando se quiere ejecutar un bloque de instrucciones al menos una vez, independientemente de la condición.
+
+```java
+// Programa que imprime los números del 1 al 10
+int i = 1;
+do {
+    System.out.println(i);
+    i++;
+} while (i <= 10);
+```
+
+La sentencia *for* se utiliza para repetir un conjunto de instrucciones un número determinado de veces. La sentencia *for* se compone de tres partes: la inicialización, la condición y la actualización.
+
+![for](imgs/for.png)
+
+El funcionamiento es el siguiente:
+1. Se ejecuta la inicialización.
+2. Se evalúa la condición. Si la condición es verdadera, se ejecutan las instrucciones del bloque.
+3. Se ejecuta la actualización.
+4. Se vuelve a evaluar la condición. Si la condición es verdadera, se ejecutan las instrucciones del bloque. Este proceso se repite hasta que la condición sea falsa.
+
+La sentencia *for* es especialmente útil cuando se conoce el número de iteraciones que se van a realizar, ya que permite agrupar la inicialización, la condición y la actualización en un solo lugar.
+
+En la sentencia *for*, la inicialización y la actualización son opcionales. Si no se especifican, se consideran vacías. La condición también es opcional. Si no se especifica, se considera verdadera.
+
+```java
+// Programa que imprime los números del 1 al 10
+for (int i = 1; i <= 10; i++) {
+    System.out.println(i);
+}
+```
 
 ## Funciones
 
